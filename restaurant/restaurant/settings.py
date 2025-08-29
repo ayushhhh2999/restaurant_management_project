@@ -20,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-3siw53umw+c3uecn^kiqip9w)usc*z%)ilsm&42$4mt5=sk_0@'
+SECRET_KEY = 'django-insecure-p%0+o)@1h8ikz5k@#n-=aryy#2dhtp8un1q82sby2quayree)x'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -29,16 +29,17 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
+AUTH_USER_MODEL = "accounts.Role"
 
 INSTALLED_APPS = [
-     "django.contrib.admin",
-    "django.contrib.auth",
-    "django.contrib.contenttypes",
-    "django.contrib.sessions",
-    "django.contrib.messages",
-    "django.contrib.staticfiles",
-    "rest_framework",   # DRF
-    "orders", 
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    "accounts",
+    "orders",
 ]
 
 MIDDLEWARE = [
@@ -100,6 +101,18 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "rest_framework.authentication.SessionAuthentication",
+        "rest_framework.authentication.BasicAuthentication",
+    ],
+    "DEFAULT_PERMISSION_CLASSES": [
+        "rest_framework.permissions.IsAuthenticated",
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
