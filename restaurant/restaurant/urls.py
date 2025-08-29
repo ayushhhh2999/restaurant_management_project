@@ -28,6 +28,6 @@ urlpatterns = [
     path("menu/", MenuCreateAPIView.as_view(), name="menu"),
     path("orders/", OrderCreateAPIView.as_view(), name="orders"),
     path("orders/<int:pk>/pay/", ProcessPaymentAPIView.as_view(), name="process-payment"),
-     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 ]
